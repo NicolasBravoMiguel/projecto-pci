@@ -68,3 +68,45 @@ Proceso
 
 Salida
 - Plan de altimentacion para el dia
+
+
+Codigo:
+
+ 1. Definir variables
+  
+# 2. Preguntar "¿Cuál es tu sexo?" y almacenar en la variable sexo
+sexo = input("¿Cuál es tu sexo? ")
+
+# 3. Pedir "¿Cuántas calorías necesitas?" y almacenar en la variable calorias
+calorias = int(input("¿Cuántas calorías necesitas? "))
+
+# 4. Preguntar "¿Tienes alguna alergia?" (Sí/No) y almacenar la respuesta en la variable tieneAlergia
+respuesta_alergia = input("¿Tienes alguna alergia? (Sí/No) ")
+tieneAlergia = respuesta_alergia.lower() == "sí"
+
+# 5. Evaluar el valor de calorías y proporcionar un mensaje adecuado
+if calorias < 1500:
+    mensaje = "Se requiere poder comer un mínimo de 1500 calorías para mantener una dieta saludable."
+elif calorias > 4000:
+    mensaje = "Por encima de las 4000 calorías ya no se considera una comida saludable. Ingrese los datos nuevamente."
+elif 1500 <= calorias <= 1800:
+    mensaje = "Plan 1: Opción A, Plan 2: Opción B, Plan 3: Opción C"
+elif 1801 <= calorias <= 2000:
+    mensaje = "Plan 1: Opción D, Plan 2: Opción E, Plan 3: Opción F"
+elif 2001 <= calorias <= 2200:
+    mensaje = "Plan 1: Opción G, Plan 2: Opción H, Plan 3: Opción I"
+elif 2201 <= calorias <= 2500:
+    mensaje = "Plan 1: Opción J, Plan 2: Opción K, Plan 3: Opción L"
+elif 2501 <= calorias <= 2800:
+    mensaje = "Plan 1: Opción M, Plan 2: Opción N, Plan 3: Opción O"
+elif 2801 <= calorias <= 3100:
+    mensaje = "Plan 1: Opción P, Plan 2: Opción Q, Plan 3: Opción R"
+elif 3101 <= calorias <= 3300:
+    mensaje = "Plan 1: Opción S, Plan 2: Opción T, Plan 3: Opción U"
+elif 3301 <= calorias <= 3600:
+    mensaje = "Plan 1: Opción V, Plan 2: Opción W, Plan 3: Opción X"
+elif 3601 <= calorias <= 4000:
+    mensaje = "Plan 1: Opción Y, Plan 2: Opción Z, Plan 3: Opción AA"
+
+# 6. Imprimir el mensaje resultante
+print(mensaje)
