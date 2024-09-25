@@ -1,3 +1,5 @@
+
+
 # Función para solicitar el sexo
 def obtener_sexo():
     return input("¿Cuál es tu sexo? ")
@@ -62,21 +64,29 @@ def obtener_plan(calorias):
 def ajustar_calorias(calorias, ajuste):
     return calorias + ajuste
 
-# Función principal para ejecutar el programa
-def main():
-    sexo = obtener_sexo()
+# Nueva función para verificar las calorías hasta que estén dentro del rango
+def verificar_calorias():
     calorias = obtener_calorias()
-    alergia = tiene_alergia()
-    peso = float(input("¿Cuál es tu peso en kilogramos? "))
-    altura = float(input("¿Cuál es tu altura en metros? "))
-    imc = calcular_imc(peso, altura)
+    while calorias < 1500 or calorias > 4000:
+        print("Las calorías ingresadas están fuera del rango saludable (1500-4000). Inténtalo de nuevo.")
+        calorias = obtener_calorias()
+    return calorias
 
-    print("Calorías actuales:", calorias)
-    ajuste = int(input("¿Cuántas calorías deseas ajustar? (Usa números negativos para restar): "))
-    calorias = ajustar_calorias(calorias, ajuste)
+# Ciclo principal para seguir ejecutando el programa
+def ejecutar_programa():
+    while True:
+        sexo = obtener_sexo()
+        calorias = verificar_calorias()  # Asegura que las calorías estén en el rango
+        peso = float(input("Ingresa tu peso (kg): "))
+        altura = float(input("Ingresa tu altura (m): "))
+        imc = calcular_imc(peso, altura)
+        
+        print(obtener_mensaje(calorias, imc))
+        
+        continuar = input("¿Deseas realizar otra consulta? (Sí/No) ").lower()
+        if continuar != "sí":
+            print("Gracias por usar el programa.")
+            break
 
-    mensaje = obtener_mensaje(calorias, imc)
-    print(mensaje)
-
-# Ejecutar el programa
-main()
+# Llamada para iniciar el programa
+ejecutar_programa()
