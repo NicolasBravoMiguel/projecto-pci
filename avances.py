@@ -1,24 +1,102 @@
+# Listas de dietas para hombres y mujeres
+dietas_hombre = {
+    "1500_kcal": [
+        {"desayuno": {"nombre": "Avena con manzana", "calorías": 350}},
+        {"almuerzo": {"nombre": "Pollo asado con ensalada", "calorías": 500}},
+        {"cena": {"nombre": "Sopa de verduras", "calorías": 400}},
+        {"snacks": {"nombre": "Frutas variadas", "calorías": 250}}
+    ],
+    "2000_kcal": [
+        {"desayuno": {"nombre": "Omelette de claras", "calorías": 400}},
+        {"almuerzo": {"nombre": "Salmón con quinoa", "calorías": 600}},
+        {"cena": {"nombre": "Pechuga de pavo y verduras", "calorías": 500}},
+        {"snacks": {"nombre": "Yogur y nueces", "calorías": 500}}
+    ],
+    "2500_kcal": [
+        {"desayuno": {"nombre": "Tostadas con aguacate", "calorías": 450}},
+        {"almuerzo": {"nombre": "Carne magra con arroz", "calorías": 650}},
+        {"cena": {"nombre": "Pasta integral con atún", "calorías": 600}},
+        {"snacks": {"nombre": "Batido de proteínas", "calorías": 600}}
+    ],
+    "3000_kcal": [
+        {"desayuno": {"nombre": "Avena con nueces", "calorías": 500}},
+        {"almuerzo": {"nombre": "Pollo a la plancha con papas", "calorías": 700}},
+        {"cena": {"nombre": "Filete de res con verduras", "calorías": 700}},
+        {"snacks": {"nombre": "Frutas con yogurt y miel", "calorías": 600}}
+    ],
+    "3600_kcal": [
+        {"desayuno": {"nombre": "Huevos revueltos con jamón", "calorías": 600}},
+        {"almuerzo": {"nombre": "Pechuga de pollo y batatas", "calorías": 800}},
+        {"cena": {"nombre": "Salmón con pasta", "calorías": 800}},
+        {"snacks": {"nombre": "Barras de granola y frutos secos", "calorías": 600}}
+    ]
+}
 
+
+dietas_mujeres = {
+    "1500-1800": ["Desayuno: Avena con almendras", "Almuerzo: Ensalada de quinoa", "Cena: Pescado con brócoli"],
+    "1801-2000": ["Desayuno: Batido verde", "Almuerzo: Wrap de pollo", "Cena: Tacos de pescado"],
+    "2001-2200": ["Desayuno: Pan integral con aguacate", "Almuerzo: Salmón con arroz integral", "Cena: Ensalada con tofu"],
+    "2201-2500": ["Desayuno: Yogurt con frutas", "Almuerzo: Sándwich de pavo", "Cena: Filete de pescado con ensalada"],
+    "2501-2800": ["Desayuno: Smoothie de bayas", "Almuerzo: Pasta integral con pollo", "Cena: Ensalada griega"],
+    "2801-3100": ["Desayuno: Tostadas con hummus", "Almuerzo: Pollo al curry con arroz", "Cena: Pavo al horno con papas"],
+    "3101-3300": ["Desayuno: Huevos revueltos con espinacas", "Almuerzo: Hamburguesa vegana", "Cena: Pollo al limón con quinoa"],
+    "3301-3600": ["Desayuno: Pan de plátano", "Almuerzo: Ensalada César con salmón", "Cena: Pizza casera vegetariana"],
+    "3601-4000": ["Desayuno: Gofres de avena", "Almuerzo: Enchiladas de pollo", "Cena: Paella de mariscos"]
+}
 
 # Función para solicitar el sexo
 def obtener_sexo():
-    return input("¿Cuál es tu sexo? ")
+    return input("¿Cuál es tu sexo? (Hombre/Mujer): ").lower()
 
 # Función para solicitar las calorías necesarias
 def obtener_calorias():
     return int(input("¿Cuántas calorías necesitas? "))
 
-# Función para determinar si la persona tiene alguna alergia
-def tiene_alergia():
-    respuesta_alergia = input("¿Tienes alguna alergia? (Sí/No) ").lower()
-    return respuesta_alergia == "sí"
+# Nueva función para verificar las calorías hasta que estén dentro del rango
+def verificar_calorias():
+    calorias = obtener_calorias()
+    while calorias < 1500 or calorias > 4000:
+        print("Las calorías ingresadas están fuera del rango saludable (1500-4000). Inténtalo de nuevo.")
+        calorias = obtener_calorias()
+    return calorias
+
+# Función para obtener un plan basado en el sexo y las calorías
+def obtener_plan_por_sexo(sexo, calorias):
+    if 1500 <= calorias <= 1800:
+        rango = "1500-1800"
+    elif 1801 <= calorias <= 2000:
+        rango = "1801-2000"
+    elif 2001 <= calorias <= 2200:
+        rango = "2001-2200"
+    elif 2201 <= calorias <= 2500:
+        rango = "2201-2500"
+    elif 2501 <= calorias <= 2800:
+        rango = "2501-2800"
+    elif 2801 <= calorias <= 3100:
+        rango = "2801-3100"
+    elif 3101 <= calorias <= 3300:
+        rango = "3101-3300"
+    elif 3301 <= calorias <= 3600:
+        rango = "3301-3600"
+    elif 3601 <= calorias <= 4000:
+        rango = "3601-4000"
+    else:
+        return []
+
+    if sexo == "hombre":
+        return dietas_hombres[rango]
+    elif sexo == "mujer":
+        return dietas_mujeres[rango]
+    else:
+        return []
 
 # Función para calcular el IMC
 def calcular_imc(peso, altura):
     return peso / (altura ** 2)
 
-# Función para determinar el mensaje basado en las calorías y el IMC
-def obtener_mensaje(calorias, imc):
+# Función para obtener el mensaje final con la dieta
+def obtener_mensaje(calorias, imc, sexo):
     if calorias < 1500:
         return "Se requiere poder comer un mínimo de 1500 calorías para mantener una dieta saludable."
     elif calorias > 4000:
@@ -33,44 +111,13 @@ def obtener_mensaje(calorias, imc):
         else:
             mensaje = "Tienes un IMC de obesidad. Considera reducir tu ingesta de calorías y consulta a un profesional."
 
-        # Añadir la recomendación basada en la ingesta calórica
-        mensaje += obtener_plan(calorias)
+        # Añadir la recomendación basada en el sexo y las calorías
+        plan_dieta = obtener_plan_por_sexo(sexo, calorias)
+        if plan_dieta:
+            mensaje += "\nAquí tienes tu plan de comidas:\n" + "\n".join(plan_dieta)
+        else:
+            mensaje += "No se encontró un plan adecuado para las calorías ingresadas."
         return mensaje
-
-# Función para obtener un plan basado en las calorías
-def obtener_plan(calorias):
-    if 1500 <= calorias <= 1800:
-        return "Plan 1: Opción A, Plan 2: Opción B, Plan 3: Opción C"
-    elif 1801 <= calorias <= 2000:
-        return "Plan 1: Opción D, Plan 2: Opción E, Plan 3: Opción F"
-    elif 2001 <= calorias <= 2200:
-        return "Plan 1: Opción G, Plan 2: Opción H, Plan 3: Opción I"
-    elif 2201 <= calorias <= 2500:
-        return "Plan 1: Opción J, Plan 2: Opción K, Plan 3: Opción L"
-    elif 2501 <= calorias <= 2800:
-        return "Plan 1: Opción M, Plan 2: Opción N, Plan 3: Opción O"
-    elif 2801 <= calorias <= 3100:
-        return "Plan 1: Opción P, Plan 2: Opción Q, Plan 3: Opción R"
-    elif 3101 <= calorias <= 3300:
-        return "Plan 1: Opción S, Plan 2: Opción T, Plan 3: Opción U"
-    elif 3301 <= calorias <= 3600:
-        return "Plan 1: Opción V, Plan 2: Opción W, Plan 3: Opción X"
-    elif 3601 <= calorias <= 4000:
-        return "Plan 1: Opción Y, Plan 2: Opción Z, Plan 3: Opción AA"
-    else:
-        return ""
-
-# Función para sumar o restar calorías
-def ajustar_calorias(calorias, ajuste):
-    return calorias + ajuste
-
-# Nueva función para verificar las calorías hasta que estén dentro del rango
-def verificar_calorias():
-    calorias = obtener_calorias()
-    while calorias < 1500 or calorias > 4000:
-        print("Las calorías ingresadas están fuera del rango saludable (1500-4000). Inténtalo de nuevo.")
-        calorias = obtener_calorias()
-    return calorias
 
 # Ciclo principal para seguir ejecutando el programa
 def ejecutar_programa():
@@ -81,7 +128,7 @@ def ejecutar_programa():
         altura = float(input("Ingresa tu altura (m): "))
         imc = calcular_imc(peso, altura)
         
-        print(obtener_mensaje(calorias, imc))
+        print(obtener_mensaje(calorias, imc, sexo))
         
         continuar = input("¿Deseas realizar otra consulta? (Sí/No) ").lower()
         if continuar != "sí":
