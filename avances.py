@@ -1,37 +1,15 @@
 # Listas de dietas para hombres y mujeres
-dietas_hombre = {
-    "1500_kcal": [
-        {"desayuno": {"nombre": "Avena con manzana", "calorías": 350}},
-        {"almuerzo": {"nombre": "Pollo asado con ensalada", "calorías": 500}},
-        {"cena": {"nombre": "Sopa de verduras", "calorías": 400}},
-        {"snacks": {"nombre": "Frutas variadas", "calorías": 250}}
-    ],
-    "2000_kcal": [
-        {"desayuno": {"nombre": "Omelette de claras", "calorías": 400}},
-        {"almuerzo": {"nombre": "Salmón con quinoa", "calorías": 600}},
-        {"cena": {"nombre": "Pechuga de pavo y verduras", "calorías": 500}},
-        {"snacks": {"nombre": "Yogur y nueces", "calorías": 500}}
-    ],
-    "2500_kcal": [
-        {"desayuno": {"nombre": "Tostadas con aguacate", "calorías": 450}},
-        {"almuerzo": {"nombre": "Carne magra con arroz", "calorías": 650}},
-        {"cena": {"nombre": "Pasta integral con atún", "calorías": 600}},
-        {"snacks": {"nombre": "Batido de proteínas", "calorías": 600}}
-    ],
-    "3000_kcal": [
-        {"desayuno": {"nombre": "Avena con nueces", "calorías": 500}},
-        {"almuerzo": {"nombre": "Pollo a la plancha con papas", "calorías": 700}},
-        {"cena": {"nombre": "Filete de res con verduras", "calorías": 700}},
-        {"snacks": {"nombre": "Frutas con yogurt y miel", "calorías": 600}}
-    ],
-    "3600_kcal": [
-        {"desayuno": {"nombre": "Huevos revueltos con jamón", "calorías": 600}},
-        {"almuerzo": {"nombre": "Pechuga de pollo y batatas", "calorías": 800}},
-        {"cena": {"nombre": "Salmón con pasta", "calorías": 800}},
-        {"snacks": {"nombre": "Barras de granola y frutos secos", "calorías": 600}}
-    ]
+dietas_hombres = {
+    "1500-1800": ["Desayuno: Avena y frutas", "Almuerzo: Pollo a la plancha con vegetales", "Cena: Pescado con ensalada"],
+    "1801-2000": ["Desayuno: Huevos con aguacate", "Almuerzo: Pasta con pollo", "Cena: Salmón con quinoa"],
+    "2001-2200": ["Desayuno: Batido de proteínas", "Almuerzo: Hamburguesa de pavo", "Cena: Filete con espárragos"],
+    "2201-2500": ["Desayuno: Pan integral con mantequilla de maní", "Almuerzo: Ensalada de atún", "Cena: Pechuga de pollo con arroz"],
+    "2501-2800": ["Desayuno: Yogurt con granola", "Almuerzo: Ensalada César con pollo", "Cena: Lomo de cerdo con batata"],
+    "2801-3100": ["Desayuno: Smoothie de frutas", "Almuerzo: Pollo al curry", "Cena: Filete de pescado con patatas"],
+    "3101-3300": ["Desayuno: Tortilla con jamón", "Almuerzo: Pasta boloñesa", "Cena: Chuletas de cerdo con ensalada"],
+    "3301-3600": ["Desayuno: Bagel con queso crema", "Almuerzo: Pollo teriyaki con arroz", "Cena: Pizza casera con ensalada"],
+    "3601-4000": ["Desayuno: Tostadas francesas", "Almuerzo: Pollo al horno con patatas", "Cena: Lasagna de carne"]
 }
-
 
 dietas_mujeres = {
     "1500-1800": ["Desayuno: Avena con almendras", "Almuerzo: Ensalada de quinoa", "Cena: Pescado con brócoli"],
