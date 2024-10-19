@@ -1,0 +1,10 @@
+Revisar:Avance # 2
+Comentario : No subiste el código. Viendo tu readme, en el pseudocódigo no hay operaciones aritméticas.			
+
+
+Revisar: Avance # 3
+Comentario :  No subiste código.	
+
+
+Revisar: Avance # 4
+Comentario : Ocupas subir tu código en un archivo .py		
