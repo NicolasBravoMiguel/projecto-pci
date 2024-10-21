@@ -58,17 +58,19 @@ dietas_mujeres = {
                   "Almuerzo: Enchiladas de pollo", 
                   "Cena: Paella de mariscos"]
 }
-
+# Funcion q solicita el sexo del usuario
 def obtener_sexo():
-    """Solicita al usuario su sexo y lo devuelve en minúsculas."""
+    
     return input("¿Cuál es tu sexo? (Hombre/Mujer): ").lower()
 
+#Funcion q solicita las calorias que el usuario quiere consumir
 def obtener_calorias():
-    """Solicita al usuario la cantidad de calorías necesarias."""
+    
     return int(input("¿Cuántas calorías necesitas? "))
 
+#Funcion que verifica que las calorías estén dentro del rango 1500-4000.
 def verificar_calorias():
-    """Verifica que las calorías estén dentro del rango 1500-4000."""
+    
     calorias = obtener_calorias()
     while calorias < 1500 or calorias > 4000:
         print("Las calorías ingresadas están fuera del rango saludable (1500-4000). "
@@ -76,8 +78,9 @@ def verificar_calorias():
         calorias = obtener_calorias()
     return calorias
 
+ #Funcion que obtiene el plan alimenticio basado en el sexo y calorías requeridas.
 def obtener_plan_por_sexo(sexo, calorias):
-    """Obtiene el plan alimenticio basado en el sexo y calorías requeridas."""
+   
     if 1500 <= calorias <= 1800:
         rango = "1500-1800"
     elif 1801 <= calorias <= 2000:
@@ -106,12 +109,14 @@ def obtener_plan_por_sexo(sexo, calorias):
     else:
         return []
 
+#Funcion que calcula el Índice de Masa Corporal (IMC).
 def calcular_imc(peso, altura):
-    """Calcula el Índice de Masa Corporal (IMC)."""
+    
     return peso / (altura ** 2)
 
+ # Funcio q determina si tu IMC es bueno o deberias relizar cambios en tu dieta.
 def obtener_mensaje(calorias, imc, sexo):
-    """Genera un mensaje final que incluye la dieta recomendada según el IMC."""
+   
     if calorias < 1500:
         return "Se requiere un mínimo de 1500 calorías para mantener una dieta saludable."
     elif calorias > 4000:
@@ -133,8 +138,9 @@ def obtener_mensaje(calorias, imc, sexo):
             mensaje += "No se encontró un plan adecuado para las calorías ingresadas."
         return mensaje
 
+ #Ciclo principal que ejecuta el programa y permite realizar consultas continuas.
 def ejecutar_programa():
-    """Ciclo principal que ejecuta el programa y permite realizar consultas continuas."""
+   
     while True:
         sexo = obtener_sexo()
         calorias = verificar_calorias()
